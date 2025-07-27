@@ -1,0 +1,18 @@
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+import "./SafeMathLib.sol";
+
+abstract contract VaultBase {
+    using SafeMathLib for uint;
+
+    mapping(address => uint) internal balances;
+
+    event Deposited(address indexed user, uint amount);
+    event Withdrawn(address indexed user, uint amount);
+
+    function getBalance(address user) public view returns (uint) {
+        return balances[user];
+    }
+}
+
